@@ -18,6 +18,7 @@ IMAGES_DIR = os.path.join(STATIC_DIR, "images")
 
 env = Environment(loader=FileSystemLoader(TEMPLATES_DIR))
 
+
 def get_user_info(username, token):
     """Pobiera info o użytkowniku (m.in. avatar_url)."""
     url = "https://gitlab.com/api/v4/users"
@@ -29,6 +30,7 @@ def get_user_info(username, token):
     if users:
         return users[0]
     return None
+
 
 def download_avatar(avatar_url):
     """Pobiera avatar i zapisuje go w static/images/avatar.jpg (nadpisuje)."""
@@ -43,6 +45,7 @@ def download_avatar(avatar_url):
             f.write(chunk)
     return "static/images/avatar.jpg"
 
+
 def fetch_gitlab_projects(username, token):
     """Pobiera listę projektów z GitLab."""
     url = f"https://gitlab.com/api/v4/users/{username}/projects"
@@ -55,6 +58,7 @@ def fetch_gitlab_projects(username, token):
     r = requests.get(url, headers=headers, params=params)
     r.raise_for_status()
     return r.json()
+
 
 def fetch_repo_tree(project_id, token, path="", ref="main"):
     from urllib.parse import quote
@@ -70,6 +74,7 @@ def fetch_repo_tree(project_id, token, path="", ref="main"):
     r.raise_for_status()
     return r.json()
 
+
 def download_file(project_id, token, file_path, ref="main"):
     from urllib.parse import quote
     encoded_path = quote(file_path, safe='')
@@ -79,6 +84,7 @@ def download_file(project_id, token, file_path, ref="main"):
     r = requests.get(url, headers=headers, params=params)
     r.raise_for_status()
     return r.content
+
 
 def find_screenshot_paths(project_id, token, ref="main"):
     """
@@ -101,6 +107,7 @@ def find_screenshot_paths(project_id, token, ref="main"):
                     found.append((item["name"], item["path"]))
     return found
 
+
 def download_first_screenshot(project, token):
     """
     Pobiera pierwszy znaleziony screenshot i zwraca lokalną ścieżkę.
@@ -119,6 +126,7 @@ def download_first_screenshot(project, token):
     with open(local_path, "wb") as f:
         f.write(file_bytes)
     return f"static/screenshots/{local_filename}"
+
 
 def main():
     if not GITLAB_TOKEN:
@@ -178,6 +186,7 @@ def main():
         f.write(lasery_html)
 
     print("Wygenerowano wszystkie podstrony portfolio.")
+
 
 if __name__ == "__main__":
     main()

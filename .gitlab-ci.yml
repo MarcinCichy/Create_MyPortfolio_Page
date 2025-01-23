@@ -1,0 +1,28 @@
+image: python:3.10
+
+pages:
+  script:
+    # 1. Zainstaluj zależności
+    - pip install -r requirements.txt
+
+    # 2. Ustaw zmienną środowiskową
+    #    (zakładając, że w GitLab wstawisz GITLAB_TOKEN do Settings → CI/CD → Variables)
+    #    - export GITLAB_TOKEN="$GITLAB_TOKEN"
+
+    # 3. Uruchom skrypt generujący stronę (pliki HTML i folder static)
+    - python generate_portfolio.py
+
+    # 4. Stwórz folder public/ i przenieś do niego pliki, które mają być dostępne na stronie
+    - mkdir public
+    - cp -r *.html public/       # skopiuj wszystkie wygenerowane pliki HTML
+    - cp -r static/ public/static/  # skopiuj katalog static, jeśli potrzebny
+
+    # UWAGA: jeśli generujesz do jakiegoś folderu, np. build/, to skopiuj stamtąd do public/.
+
+  artifacts:
+    paths:
+      - public  # wszystko, co w public/ będzie wystawione przez GitLab Pages
+    expire_in: 1 week
+
+  only:
+    - main      # pipeline uruchamia się tylko dla brancha 'main'

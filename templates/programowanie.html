@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Programowanie - Moje Portfolio{% endblock title %}
+
+{% block content %}
+<h1 class="mb-4">Projekty Programistyczne</h1>
+<p>Tutaj znajdują się informacje o moich projektach z GitLab.</p>
+
+<div class="row">
+  {% for project in projects %}
+  <div class="col-md-6 col-lg-4">
+    <div class="card mb-4 project-card">
+      {% if project.screenshot_path %}
+        <img src="{{ project.screenshot_path }}" alt="{{ project.name }}"
+             class="card-img-top project-image">
+      {% endif %}
+      <div class="card-body">
+        <h5 class="card-title">{{ project.name }}</h5>
+        <p class="card-text">{{ project.description if project.description else "Brak opisu..." }}</p>
+        <a href="{{ project.web_url }}" class="btn btn-primary" target="_blank">Repozytorium</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %}

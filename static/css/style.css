@@ -1,0 +1,64 @@
+body {
+  background-color: #282a36; /* główne tło */
+  color: #f8f8f2;            /* jasny kolor czcionki */
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-dark {
+  background-color: #353746; /* ciemny pasek nawigacji */
+}
+
+.nav-link,
+.navbar-brand {
+  color: #f8f8f2 !important;
+}
+
+.nav-link:hover,
+.navbar-brand:hover {
+  color: #bd93f9 !important; /* fioletowy akcent przy hover */
+}
+
+.card {
+  background-color: #353746;
+  border: none;
+  border-radius: 5px;
+}
+
+.card .card-title, .card .card-text, .card .btn {
+  color: #f8f8f2;
+}
+
+.btn-primary {
+  background-color: #6272a4;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #bd93f9;
+}
+
+/* Stopka */
+footer {
+  padding: 20px 0;
+  text-align: center;
+  font-size: 0.9em;
+  color: #f8f8f2;
+  opacity: 0.8;
+}
+
+/* Avatar obok imienia */
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-info img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #bd93f9;
+}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Strona Główna - Moje Portfolio{% endblock title %}
+
+{% block content %}
+<h1 class="mb-4">O mnie</h1>
+
+<div class="profile-info mb-4">
+  {% if avatar_path %}
+    <img src="{{ avatar_path }}" alt="Avatar">
+  {% else %}
+    <!-- W razie braku pobranego avatara - placeholder -->
+    <img src="https://via.placeholder.com/120x120.png?text=Brak+avatar"
+         alt="Avatar">
+  {% endif %}
+  <div>
+    <h2>{{ my_name }}</h2>
+    <p>{{ my_description }}</p>
+  </div>
+</div>
+
+<hr />
+
+<h3>Doświadczenie</h3>
+<p>
+  Tutaj wstaw przykładowy opis Twojego doświadczenia zawodowego i/lub
+  akademickiego. Na przykład:
+</p>
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at metus
+  finibus, placerat justo at, varius libero. Suspendisse iaculis massa sed
+  ante dapibus ullamcorper.
+</p>
+
+<h3>Zainteresowania</h3>
+<p>
+  Tutaj również wymyślony, przykładowy opis:
+</p>
+<p>
+  Interesuję się programowaniem w Pythonie, nowoczesnymi technologiami IT,
+  zagadnieniami budownictwa inżynieryjnego oraz zastosowaniem laserów w
+  różnych gałęziach przemysłu.
+</p>
+
+{% endblock content %}

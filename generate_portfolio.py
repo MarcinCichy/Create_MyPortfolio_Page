@@ -5,10 +5,10 @@ from jinja2 import Environment, FileSystemLoader
 
 load_dotenv()
 
-GITLAB_TOKEN = os.getenv("GITLAB_TOKEN")
-GITLAB_USERNAME = os.getenv("GITLAB_USERNAME", "moj_login_gitlab")
-MY_NAME = os.getenv("MY_NAME", "Jan Kowalski")
-MY_DESCRIPTION = os.getenv("MY_DESCRIPTION", "Programista, miłośnik technologii i laserów")
+GITLAB_TOKEN = os.getenv("GITLAB_TOKEN")  # dodaj w CI/CD Variables, jeśli potrzebne
+GITLAB_USERNAME = os.getenv("GITLAB_USERNAME", "MarcinCichy")
+MY_NAME = os.getenv("MY_NAME", "Marcin Cichy")
+MY_DESCRIPTION = os.getenv("MY_DESCRIPTION", "Marcin Cichy - entuzjasta AI, Pythona, nowocesnych technologii oraz starych komputerów.")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
@@ -19,10 +19,16 @@ IMAGES_DIR = os.path.join(STATIC_DIR, "images")
 env = Environment(loader=FileSystemLoader(TEMPLATES_DIR))
 
 
-def get_user_info(username, token):
-    """Pobiera info o użytkowniku (m.in. avatar_url)."""
+def get_user_info(username, token=None):
+    """
+    Pobiera info o użytkowniku (m.in. avatar_url) z GitLab.
+    Jeśli token jest podany, może pobierać prywatne dane,
+    ale do publicznych wystarczy brak autoryzacji.
+    """
     url = "https://gitlab.com/api/v4/users"
-    headers = {"PRIVATE-TOKEN": token}
+    headers = {}
+    if token:
+        headers["PRIVATE-TOKEN"] = token
     params = {"username": username}
     r = requests.get(url, headers=headers, params=params)
     r.raise_for_status()
@@ -33,7 +39,10 @@ def get_user_info(username, token):
 
 
 def download_avatar(avatar_url):
-    """Pobiera avatar i zapisuje go w static/images/avatar.jpg (nadpisuje)."""
+    """
+    Pobiera avatar i zapisuje go w static/images/avatar.jpg (nadpisuje).
+    Zwraca ścieżkę relatywną "static/images/avatar.jpg".
+    """
     if not avatar_url:
         return None
     os.makedirs(IMAGES_DIR, exist_ok=True)
@@ -46,10 +55,15 @@ def download_avatar(avatar_url):
     return "static/images/avatar.jpg"
 
 
-def fetch_gitlab_projects(username, token):
-    """Pobiera listę projektów z GitLab."""
+def fetch_gitlab_projects(username, token=None):
+    """
+    Pobiera listę projektów użytkownika z GitLab.
+    Jeśli token jest podany, można pobierać też prywatne proj.
+    """
     url = f"https://gitlab.com/api/v4/users/{username}/projects"
-    headers = {"PRIVATE-TOKEN": token}
+    headers = {}
+    if token:
+        headers["PRIVATE-TOKEN"] = token
     params = {
         "per_page": 100,
         "order_by": "last_activity_at",
@@ -60,11 +74,13 @@ def fetch_gitlab_projects(username, token):
     return r.json()
 
 
-def fetch_repo_tree(project_id, token, path="", ref="main"):
+def fetch_repo_tree(project_id, token=None, path="", ref="main"):
     from urllib.parse import quote
     encoded_path = quote(path, safe='')
     url = f"https://gitlab.com/api/v4/projects/{project_id}/repository/tree"
-    headers = {"PRIVATE-TOKEN": token}
+    headers = {}
+    if token:
+        headers["PRIVATE-TOKEN"] = token
     params = {
         "ref": ref,
         "path": path,
@@ -75,23 +91,23 @@ def fetch_repo_tree(project_id, token, path="", ref="main"):
     return r.json()
 
 
-def download_file(project_id, token, file_path, ref="main"):
+def download_file(project_id, file_path, token=None, ref="main"):
     from urllib.parse import quote
     encoded_path = quote(file_path, safe='')
     url = f"https://gitlab.com/api/v4/projects/{project_id}/repository/files/{encoded_path}/raw"
-    headers = {"PRIVATE-TOKEN": token}
+    headers = {}
+    if token:
+        headers["PRIVATE-TOKEN"] = token
     params = {"ref": ref}
     r = requests.get(url, headers=headers, params=params)
     r.raise_for_status()
     return r.content
 
 
-def find_screenshot_paths(project_id, token, ref="main"):
+def find_screenshot_paths(project_id, token=None, ref="main"):
     """
-    Szuka w głównym katalogu i w 'screenshots', 'Screenshots',
-    'images', 'Images', 'media' - plików .png/.jpg/.jpeg.
-    Zwraca listę (name, path w repo). Tu można pobrać tylko pierwszy,
-    albo wszystkie do listy.
+    Szuka plików .png/.jpg/.jpeg w możliwych folderach (root, screenshots, images, media).
+    Zwraca listę (name, path).
     """
     possible_folders = ["", "screenshots", "Screenshots", "images", "Images", "media"]
     found = []
@@ -108,19 +124,18 @@ def find_screenshot_paths(project_id, token, ref="main"):
     return found
 
 
-def download_first_screenshot(project, token):
+def download_first_screenshot(project, token=None):
     """
-    Pobiera pierwszy znaleziony screenshot i zwraca lokalną ścieżkę.
+    Pobiera pierwszy znaleziony screenshot i zwraca lokalną ścieżkę do pliku w static/screenshots.
     """
     os.makedirs(SCREENSHOTS_DIR, exist_ok=True)
     project_id = project["id"]
     ref = project.get("default_branch", "main")
-    images = find_screenshot_paths(project_id, token, ref=ref)
+    images = find_screenshot_paths(project_id, token=token, ref=ref)
     if not images:
         return None
-    # Bierzemy pierwszy
     first_name, first_path = images[0]
-    file_bytes = download_file(project_id, token, first_path, ref=ref)
+    file_bytes = download_file(project_id, first_path, token=token, ref=ref)
     local_filename = f"{project_id}_{first_name}"
     local_path = os.path.join(SCREENSHOTS_DIR, local_filename)
     with open(local_path, "wb") as f:
@@ -128,64 +143,48 @@ def download_first_screenshot(project, token):
     return f"static/screenshots/{local_filename}"
 
 
-def main():
-    if not GITLAB_TOKEN:
-        print("Brak GITLAB_TOKEN w .env")
-        return
+def render_page(template_name, output_filename, **context):
+    template = env.get_template(template_name)
+    rendered_html = template.render(**context)
+    with open(os.path.join(BASE_DIR, output_filename), "w", encoding="utf-8") as f:
+        f.write(rendered_html)
 
-    # 1) Avatar
+
+def main():
+    # 1) Pobierz info o użytkowniku (avatar)
     user_info = get_user_info(GITLAB_USERNAME, GITLAB_TOKEN)
     avatar_url = user_info["avatar_url"] if user_info else None
     avatar_path = download_avatar(avatar_url) if avatar_url else None
 
-    # 2) Projekty
+    # 2) Pobierz projekty
     projects = fetch_gitlab_projects(GITLAB_USERNAME, GITLAB_TOKEN)
 
-    # 3) Dla każdego projektu pobierz screenshot (pierwszy znaleziony)
+    # 3) Pobierz screenshot (pierwszy) dla każdego projektu
     for p in projects:
-        sc = download_first_screenshot(p, GITLAB_TOKEN)
-        p["screenshot_path"] = sc
+        screenshot_path = download_first_screenshot(p, token=GITLAB_TOKEN)
+        p["screenshot_path"] = screenshot_path
 
-    # 4) Renderuj podstrony
-    #   a) Strona główna (index.html)
-    index_template = env.get_template("index.html")
-    index_html = index_template.render(
-        my_name=MY_NAME,
-        my_description=MY_DESCRIPTION,
-        avatar_path=avatar_path,
-    )
-    with open(os.path.join(BASE_DIR, "index.html"), "w", encoding="utf-8") as f:
-        f.write(index_html)
+    # 4) Renderujemy strony
+    # index.html (strona główna)
+    render_page("index.html", "index.html",
+                my_name=MY_NAME,
+                my_description=MY_DESCRIPTION,
+                avatar_path=avatar_path)
 
-    #   b) Programowanie (programowanie.html)
-    prog_template = env.get_template("programowanie.html")
-    prog_html = prog_template.render(
-        projects=projects
-        # Możesz też przekazać my_name, my_description, itp. –
-        # jeśli chcesz użyć w danej podstronie
-    )
-    with open(os.path.join(BASE_DIR, "programowanie.html"), "w", encoding="utf-8") as f:
-        f.write(prog_html)
+    # programowanie.html
+    render_page("programowanie.html", "programowanie.html",
+                projects=projects)
 
-    #   c) IT (it.html)
-    it_template = env.get_template("it.html")
-    it_html = it_template.render()
-    with open(os.path.join(BASE_DIR, "it.html"), "w", encoding="utf-8") as f:
-        f.write(it_html)
+    # it.html
+    render_page("it.html", "it.html")
 
-    #   d) Budownictwo (budownictwo.html)
-    bud_template = env.get_template("budownictwo.html")
-    bud_html = bud_template.render()
-    with open(os.path.join(BASE_DIR, "budownictwo.html"), "w", encoding="utf-8") as f:
-        f.write(bud_html)
+    # budownictwo.html
+    render_page("budownictwo.html", "budownictwo.html")
 
-    #   e) Lasery (lasery.html)
-    lasery_template = env.get_template("lasery.html")
-    lasery_html = lasery_template.render()
-    with open(os.path.join(BASE_DIR, "lasery.html"), "w", encoding="utf-8") as f:
-        f.write(lasery_html)
+    # lasery.html
+    render_page("lasery.html", "lasery.html")
 
-    print("Wygenerowano wszystkie podstrony portfolio.")
+    print("Wygenerowano strony w bieżącym katalogu!")
 
 
 if __name__ == "__main__":

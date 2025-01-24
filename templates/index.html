@@ -3,14 +3,15 @@
 {% block title %}Strona Główna - Moje Portfolio{% endblock title %}
 
 {% block content %}
+<!-- Sekcja O mnie -->
 <h1 class="mb-4">O mnie</h1>
 
-<div class="profile-info mb-4">
+<div class="profile-info">
   {% if avatar_path %}
     <img src="{{ avatar_path }}" alt="Avatar">
   {% else %}
     <!-- W razie braku pobranego avatara - placeholder -->
-    <img src="https://via.placeholder.com/120x120.png?text=Brak+avatar"
+    <img src="https://via.placeholder.com/130x130.png?text=Brak+avatar"
          alt="Avatar">
   {% endif %}
   <div>
@@ -21,25 +22,37 @@
 
 <hr />
 
-<h3>Doświadczenie</h3>
+<!-- Doświadczenie -->
+<h3 class="section-title">Doświadczenie</h3>
 <p>
-  Tutaj wstaw przykładowy opis Twojego doświadczenia zawodowego i/lub
-  akademickiego. Na przykład:
-</p>
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at metus
-  finibus, placerat justo at, varius libero. Suspendisse iaculis massa sed
-  ante dapibus ullamcorper.
+  Tutaj możesz opisać swoje doświadczenie zawodowe / projekty, nad którymi pracowałeś.
 </p>
 
-<h3>Zainteresowania</h3>
+<!-- Zainteresowania -->
+<h3 class="section-title">Zainteresowania</h3>
 <p>
-  Tutaj również wymyślony, przykładowy opis:
-</p>
-<p>
-  Interesuję się programowaniem w Pythonie, nowoczesnymi technologiami IT,
-  zagadnieniami budownictwa inżynieryjnego oraz zastosowaniem laserów w
-  różnych gałęziach przemysłu.
+  Tutaj opisz swoje główne hobby, technologię, lasery, budownictwo – co tylko chcesz.
 </p>
 
+<hr />
+
+<!-- Kontakt -->
+<h3 class="section-title">Kontakt</h3>
+<p>
+  Jeśli chcesz się ze mną skontaktować, skorzystaj z jednego z poniższych sposobów:
+</p>
+<ul>
+  <li>
+    E-mail:
+    <!-- Możesz wstawić mailto lub zmaskować adres -->
+    <a href="mailto:marcin-cichy [at] wp dot pl">marcin-cichy@wp.pl</a>
+    <!-- lub marcin [at] domena dot com -->
+  </li>
+  <li>
+    LinkedIn:
+    <a href="https://www.linkedin.com/in/marcin-pawel-cichy/" target="_blank">
+      linkedin.com/in/marcincichy
+    </a>
+  </li>
+</ul>
 {% endblock content %}

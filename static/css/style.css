@@ -1,13 +1,12 @@
 body {
-  background-color: #282a36; /* główne tło */
-  color: #f8f8f2;            /* jasny kolor czcionki */
-  font-family: 'Open Sans', sans-serif;
+  background-color: #282a36; /* ciemny kolor w stylu Dracula */
+  color: #f8f8f2;
   margin: 0;
-  padding: 0;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .navbar-dark {
-  background-color: #353746; /* ciemny pasek nawigacji */
+  background-color: #353746; /* ciemny navbar */
 }
 
 .nav-link,
@@ -17,7 +16,7 @@ body {
 
 .nav-link:hover,
 .navbar-brand:hover {
-  color: #bd93f9 !important; /* fioletowy akcent przy hover */
+  color: #bd93f9 !important; /* fioletowy akcent */
 }
 
 .card {
@@ -48,17 +47,28 @@ footer {
   opacity: 0.8;
 }
 
-/* Avatar obok imienia */
+/* Avatar + opis */
 .profile-info {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .profile-info img {
-  width: 120px;
-  height: 120px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #bd93f9;
+}
+
+.section-title {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  border-bottom: 2px solid #bd93f9;
+  display: inline-block;
+  padding-bottom: 5px;
 }

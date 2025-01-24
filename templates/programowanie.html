@@ -4,7 +4,7 @@
 
 {% block content %}
 <h1 class="mb-4">Projekty Programistyczne</h1>
-<p>Tutaj znajdują się informacje o moich projektach z GitLab.</p>
+<p>Tutaj znajdują się informacje o moich projektach z GitLab (pobierane automatycznie).</p>
 
 <div class="row">
   {% for project in projects %}
@@ -16,7 +16,9 @@
       {% endif %}
       <div class="card-body">
         <h5 class="card-title">{{ project.name }}</h5>
-        <p class="card-text">{{ project.description if project.description else "Brak opisu..." }}</p>
+        <p class="card-text">
+          {{ project.description if project.description else "Brak opisu..." }}
+        </p>
         <a href="{{ project.web_url }}" class="btn btn-primary" target="_blank">Repozytorium</a>
       </div>
     </div>

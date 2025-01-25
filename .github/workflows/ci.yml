@@ -1,0 +1,40 @@
+name: Build and Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Sprawdź repozytorium
+      - uses: actions/checkout@v3
+
+      # 2. Ustaw Python 3.10
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # 3. Instalacja zależności
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # 4. Generowanie strony (tworzenie plików .html i katalogu 'static')
+      - name: Generate portfolio
+        run: |
+          python generate_portfolio.py
+          mkdir build
+          cp -r *.html build/
+          cp -r static build/
+
+      # 5. Deploy to GitHub Pages (publikujemy zawartość folderu "build" do gałęzi gh-pages)
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          publish_branch: gh-pages

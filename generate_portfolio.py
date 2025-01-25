@@ -1,29 +1,40 @@
 import os
 import requests
+import markdown
 from dotenv import load_dotenv
 from jinja2 import Environment, FileSystemLoader
 
 load_dotenv()
 
-GITLAB_TOKEN = os.getenv("GITLAB_TOKEN")  # dodaj w CI/CD Variables, jeśli potrzebne
+GITLAB_TOKEN = os.getenv("GITLAB_TOKEN")
 GITLAB_USERNAME = os.getenv("GITLAB_USERNAME", "MarcinCichy")
+
 MY_NAME = os.getenv("MY_NAME", "Marcin Cichy")
-MY_DESCRIPTION = os.getenv("MY_DESCRIPTION", "Marcin Cichy - entuzjasta AI, Pythona, nowocesnych technologii oraz starych komputerów.")
+MY_DESCRIPTION = os.getenv("MY_DESCRIPTION", "Marcin Cichy - entuzjasta AI, Pythona, nowoczesnych technologii oraz starych komputerów.")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
+CONTENT_DIR = os.path.join(BASE_DIR, "content")
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 SCREENSHOTS_DIR = os.path.join(STATIC_DIR, "screenshots")
 IMAGES_DIR = os.path.join(STATIC_DIR, "images")
 
 env = Environment(loader=FileSystemLoader(TEMPLATES_DIR))
 
+def load_markdown_content(md_filename):
+    """
+    Wczytuje plik .md z katalogu content i konwertuje go na HTML.
+    """
+    filepath = os.path.join(CONTENT_DIR, md_filename)
+    if not os.path.exists(filepath):
+        return "<p>(Brak treści, plik nie istnieje)</p>"
+    with open(filepath, "r", encoding="utf-8") as f:
+        text_md = f.read()
+    return markdown.markdown(text_md, extensions=["fenced_code", "tables"])
 
 def get_user_info(username, token=None):
     """
     Pobiera info o użytkowniku (m.in. avatar_url) z GitLab.
-    Jeśli token jest podany, może pobierać prywatne dane,
-    ale do publicznych wystarczy brak autoryzacji.
     """
     url = "https://gitlab.com/api/v4/users"
     headers = {}
@@ -36,7 +47,6 @@ def get_user_info(username, token=None):
     if users:
         return users[0]
     return None
-
 
 def download_avatar(avatar_url):
     """
@@ -54,17 +64,16 @@ def download_avatar(avatar_url):
             f.write(chunk)
     return "static/images/avatar.jpg"
 
-
 def fetch_gitlab_projects(username, token=None):
     """
     Pobiera listę projektów użytkownika z GitLab.
-    Jeśli token jest podany, można pobierać też prywatne proj.
     """
     url = f"https://gitlab.com/api/v4/users/{username}/projects"
     headers = {}
     if token:
         headers["PRIVATE-TOKEN"] = token
     params = {
+        "visibility": "public",
         "per_page": 100,
         "order_by": "last_activity_at",
         "sort": "desc"
@@ -72,7 +81,6 @@ def fetch_gitlab_projects(username, token=None):
     r = requests.get(url, headers=headers, params=params)
     r.raise_for_status()
     return r.json()
-
 
 def fetch_repo_tree(project_id, token=None, path="", ref="main"):
     from urllib.parse import quote
@@ -90,7 +98,6 @@ def fetch_repo_tree(project_id, token=None, path="", ref="main"):
     r.raise_for_status()
     return r.json()
 
-
 def download_file(project_id, file_path, token=None, ref="main"):
     from urllib.parse import quote
     encoded_path = quote(file_path, safe='')
@@ -103,11 +110,9 @@ def download_file(project_id, file_path, token=None, ref="main"):
     r.raise_for_status()
     return r.content
 
-
 def find_screenshot_paths(project_id, token=None, ref="main"):
     """
-    Szuka plików .png/.jpg/.jpeg w możliwych folderach (root, screenshots, images, media).
-    Zwraca listę (name, path).
+    Szuka plików .png/.jpg/.jpeg w możliwych folderach.
     """
     possible_folders = ["", "screenshots", "Screenshots", "images", "Images", "media"]
     found = []
@@ -123,10 +128,9 @@ def find_screenshot_paths(project_id, token=None, ref="main"):
                     found.append((item["name"], item["path"]))
     return found
 
-
 def download_first_screenshot(project, token=None):
     """
-    Pobiera pierwszy znaleziony screenshot i zwraca lokalną ścieżkę do pliku w static/screenshots.
+    Pobiera pierwszy znaleziony screenshot i zwraca lokalną ścieżkę.
     """
     os.makedirs(SCREENSHOTS_DIR, exist_ok=True)
     project_id = project["id"]
@@ -142,50 +146,55 @@ def download_first_screenshot(project, token=None):
         f.write(file_bytes)
     return f"static/screenshots/{local_filename}"
 
-
 def render_page(template_name, output_filename, **context):
     template = env.get_template(template_name)
     rendered_html = template.render(**context)
     with open(os.path.join(BASE_DIR, output_filename), "w", encoding="utf-8") as f:
         f.write(rendered_html)
 
-
 def main():
-    # 1) Pobierz info o użytkowniku (avatar)
+    # Pobieramy info o użytkowniku -> avatar
     user_info = get_user_info(GITLAB_USERNAME, GITLAB_TOKEN)
     avatar_url = user_info["avatar_url"] if user_info else None
     avatar_path = download_avatar(avatar_url) if avatar_url else None
 
-    # 2) Pobierz projekty
+    # Pobieramy projekty
     projects = fetch_gitlab_projects(GITLAB_USERNAME, GITLAB_TOKEN)
 
-    # 3) Pobierz screenshot (pierwszy) dla każdego projektu
+    # Pobieramy screenshot dla każdego projektu (opcjonalnie)
     for p in projects:
         screenshot_path = download_first_screenshot(p, token=GITLAB_TOKEN)
         p["screenshot_path"] = screenshot_path
 
-    # 4) Renderujemy strony
+    # Wczytujemy treści Markdown
+    it_html = load_markdown_content("it.md")
+    budownictwo_html = load_markdown_content("budownictwo.md")
+    lasery_html = load_markdown_content("lasery.md")
+
+    # Renderujemy podstrony:
     # index.html (strona główna)
     render_page("index.html", "index.html",
                 my_name=MY_NAME,
                 my_description=MY_DESCRIPTION,
                 avatar_path=avatar_path)
 
-    # programowanie.html
+    # programowanie.html - projekty z GitLaba
     render_page("programowanie.html", "programowanie.html",
                 projects=projects)
 
-    # it.html
-    render_page("it.html", "it.html")
+    # it.html - wstawiamy md w it_content
+    render_page("it.html", "it.html",
+                it_content=it_html)
 
     # budownictwo.html
-    render_page("budownictwo.html", "budownictwo.html")
+    render_page("budownictwo.html", "budownictwo.html",
+                budownictwo_content=budownictwo_html)
 
     # lasery.html
-    render_page("lasery.html", "lasery.html")
+    render_page("lasery.html", "lasery.html",
+                lasery_content=lasery_html)
 
     print("Wygenerowano strony w bieżącym katalogu!")
-
 
 if __name__ == "__main__":
     main()

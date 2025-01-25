@@ -4,8 +4,8 @@
 
 {% block content %}
 <h1>IT</h1>
-<p>
-  Tutaj możesz umieścić informacje o Twoich umiejętnościach IT, certyfikatach, szkoleniach,
-  projektach w branży IT, itp.
-</p>
+<!-- Wstawiamy przetworzony tekst z it.md -->
+<div>
+  {{ it_content|safe }}
+</div>
 {% endblock content %}

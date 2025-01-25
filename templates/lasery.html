@@ -4,7 +4,8 @@
 
 {% block content %}
 <h1>Lasery</h1>
-<p>
-  Sekcja poświęcona laserom: opis projektów, badań, czy zainteresowań w tym obszarze.
-</p>
+<!-- Tekst z lasery.md -->
+<div>
+  {{ lasery_content|safe }}
+</div>
 {% endblock content %}

@@ -7,10 +7,10 @@ from jinja2 import Environment, FileSystemLoader
 load_dotenv()
 
 GITLAB_TOKEN = os.getenv("GITLAB_TOKEN")
-GITLAB_USERNAME = os.getenv("GITLAB_USERNAME", "MarcinCichy")
+GITLAB_USERNAME = os.getenv("GITLAB_USERNAME")
 
 MY_NAME = os.getenv("MY_NAME", "Marcin Cichy")
-MY_DESCRIPTION = os.getenv("MY_DESCRIPTION", "Marcin Cichy - entuzjasta AI, Pythona, nowoczesnych technologii oraz starych komputerów.")
+MY_DESCRIPTION = os.getenv("MY_DESCRIPTION")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
@@ -18,6 +18,11 @@ CONTENT_DIR = os.path.join(BASE_DIR, "content")
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 SCREENSHOTS_DIR = os.path.join(STATIC_DIR, "screenshots")
 IMAGES_DIR = os.path.join(STATIC_DIR, "images")
+
+# Wczytujemy string z .env, np. "repo1,repo2,repo3"
+projects_to_skip_str = os.getenv("PROJECTS_TO_SKIP", "")
+# Zamieniamy na listę, ignorując ewentualne spacje
+PROJECTS_TO_SKIP = [p.strip() for p in projects_to_skip_str.split(",") if p.strip()]
 
 env = Environment(loader=FileSystemLoader(TEMPLATES_DIR))
 
@@ -114,7 +119,7 @@ def find_screenshot_paths(project_id, token=None, ref="main"):
     """
     Szuka plików .png/.jpg/.jpeg w możliwych folderach.
     """
-    possible_folders = ["", "screenshots", "Screenshots", "images", "Images", "media"]
+    possible_folders = ["", "screenshot", "screenshots", "Screenshots", "images", "Images", "media"]
     found = []
     for folder in possible_folders:
         try:
@@ -161,15 +166,20 @@ def main():
     # Pobieramy projekty
     projects = fetch_gitlab_projects(GITLAB_USERNAME, GITLAB_TOKEN)
 
+    # Filtrujemy
+    filtered_projects = [
+        p for p in projects
+        if p["name"] not in PROJECTS_TO_SKIP
+    ]
     # Pobieramy screenshot dla każdego projektu (opcjonalnie)
-    for p in projects:
+    for p in filtered_projects:
         screenshot_path = download_first_screenshot(p, token=GITLAB_TOKEN)
         p["screenshot_path"] = screenshot_path
 
     # Wczytujemy treści Markdown
     it_html = load_markdown_content("it.md")
-    budownictwo_html = load_markdown_content("budownictwo.md")
-    lasery_html = load_markdown_content("lasery.md")
+    # budownictwo_html = load_markdown_content("budownictwo.md")
+    # lasery_html = load_markdown_content("lasery.md")
 
     # Renderujemy podstrony:
     # index.html (strona główna)
@@ -180,19 +190,19 @@ def main():
 
     # programowanie.html - projekty z GitLaba
     render_page("programowanie.html", "programowanie.html",
-                projects=projects)
+                projects=filtered_projects)
 
     # it.html - wstawiamy md w it_content
     render_page("it.html", "it.html",
                 it_content=it_html)
 
-    # budownictwo.html
-    render_page("budownictwo.html", "budownictwo.html",
-                budownictwo_content=budownictwo_html)
-
-    # lasery.html
-    render_page("lasery.html", "lasery.html",
-                lasery_content=lasery_html)
+    # # budownictwo.html
+    # render_page("budownictwo.html", "budownictwo.html",
+    #             budownictwo_content=budownictwo_html)
+    #
+    # # lasery.html
+    # render_page("lasery.html", "lasery.html",
+    #             lasery_content=lasery_html)
 
     print("Wygenerowano strony w bieżącym katalogu!")
 

@@ -1,12 +1,13 @@
+/* Podstawowe style */
 body {
-  background-color: #282a36; /* ciemne tło w stylu Dracula */
+  background-color: #282a36; /* Ciemne tło w stylu Dracula */
   color: #f8f8f2;
   margin: 0;
   font-family: 'Open Sans', sans-serif;
 }
 
 .navbar-dark {
-  background-color: #353746; /* ciemny navbar */
+  background-color: #353746; /* Ciemny navbar */
 }
 
 .nav-link,
@@ -16,7 +17,7 @@ body {
 
 .nav-link:hover,
 .navbar-brand:hover {
-  color: #bd93f9 !important; /* fioletowy akcent */
+  color: #50fa7b !important; /* zielonkawy akcent */
 }
 
 .card {
@@ -25,7 +26,9 @@ body {
   border-radius: 5px;
 }
 
-.card .card-title, .card .card-text, .card .btn {
+.card .card-title,
+.card .card-text,
+.card .btn {
   color: #f8f8f2;
 }
 
@@ -35,7 +38,7 @@ body {
 }
 
 .btn-primary:hover {
-  background-color: #bd93f9;
+  background-color: #50fa7b;
 }
 
 /* Stopka */
@@ -61,14 +64,69 @@ footer {
   height: 130px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #bd93f9;
+  border: 3px solid #50fa7b;
 }
 
 .section-title {
   margin-top: 40px;
   margin-bottom: 20px;
   font-size: 1.8rem;
-  border-bottom: 2px solid #bd93f9;
+  border-bottom: 2px solid #50fa7b;
   display: inline-block;
   padding-bottom: 5px;
+}
+
+/* ===== Nowe style dla kontenera kontaktowego ===== */
+
+/* Kontener kontaktowy */
+.kontakt-container {
+  display: flex;
+  justify-content: center; /* Wyśrodkowanie kolumn względem siebie */
+  gap: 50px; /* Odstęp między kolumnami */
+  margin-top: 40px; /* Odstęp od góry kontenera */
+
+  /* Nowe dodane style */
+  max-width: 800px; /* Maksymalna szerokość kontenera */
+  margin-left: 20px; /* Przesunięcie kontenera w lewo */
+}
+
+/* Kolumny kontaktowe */
+.kontakt-column {
+  list-style-type: none; /* Usunięcie punktów listy */
+  padding: 0;
+  text-align: left; /* Wyrównanie tekstu do lewej */
+}
+
+/* Elementy listy */
+.kontakt-column li {
+  margin-bottom: 15px; /* Odstęp między elementami listy */
+}
+
+/* Linki kontaktowe */
+.kontakt-column a {
+  text-decoration: none;
+  color: #50fa7b; /* Zielonkawy kolor linków */
+  transition: color 0.3s ease; /* Płynna zmiana koloru przy najechaniu */
+  font-weight: bold; /* Pogrubienie linków */
+}
+
+.kontakt-column a:hover {
+  color: #8be9fd; /* Kolor linku po najechaniu */
+  text-decoration: underline; /* Podkreślenie linku po najechaniu */
+}
+
+/* Responsywność dla urządzeń mobilnych */
+@media (max-width: 600px) {
+  .kontakt-container {
+    flex-direction: column;
+    align-items: flex-start; /* Wyrównanie do lewej na małych ekranach */
+    gap: 20px; /* Zmniejszenie odstępu między kolumnami */
+    margin-left: 10px; /* Mniejszy odstęp od lewej krawędzi */
+    max-width: none; /* Usunięcie maksymalnej szerokości */
+  }
+
+  .kontakt-column {
+    width: 100%; /* Szerokość kolumny na mniejszych ekranach */
+    max-width: none; /* Usunięcie maksymalnej szerokości */
+  }
 }

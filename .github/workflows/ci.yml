@@ -23,7 +23,13 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      # 4. Generowanie strony (tworzenie plików .html i katalogu 'static')
+      # 4. Export environment variables
+      - name: Export
+        run: |
+          echo "GITLAB_TOKEN=${{ secrets.GITLAB_TOKEN }}" >> $GITHUB_ENV
+          echo "GITLAB_USERNAME=${{ secrets.GITLAB_USERNAME }}" >> $GITHUB_ENV
+
+      # 5. Generowanie strony (tworzenie plików .html i katalogu 'static')
       - name: Generate portfolio
         run: |
           python generate_portfolio.py
@@ -31,7 +37,7 @@ jobs:
           cp -r *.html build/
           cp -r static build/
 
-      # 5. Deploy to GitHub Pages (publikujemy zawartość folderu "build" do gałęzi gh-pages)
+      # 6. Deploy to GitHub Pages (publikujemy zawartość folderu "build" do gałęzi gh-pages)
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:

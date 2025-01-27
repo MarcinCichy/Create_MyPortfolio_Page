@@ -111,24 +111,51 @@ footer p {
 }
 
 /* Kontener na logotypy */
-.logos-section {
-  display: flex;
-  flex-direction: column; /* Układ wierszy */
-  gap: 20px; /* Odstęp między wierszami logotypów */
-  margin: 20px 0; /* Odstęp nad i pod sekcją */
-}
-
 .logo-container {
   display: flex;
+  flex-wrap: wrap; /* Pozwala zawijać logotypy na kolejne wiersze */
   justify-content: center; /* Wyśrodkowanie logotypów */
-  gap: 10px; /* Odstęp między logotypami w wierszu */
+  gap: 10px; /* Odstęp między logotypami */
 }
 
 .logo-image {
-  width: auto !important;
-  height: 60px !important; /* Ustaw wysokość logotypów */
-  object-fit: contain; /* Dopasowanie obrazu do miniaturki */
+  width: auto;
+  height: 60px; /* Ustawienie maksymalnej wysokości logotypów */
+  object-fit: contain; /* Dopasowanie obrazu do kontenera */
 }
+
+/* Układ na dużych ekranach (domyślny: 2 rzędy) */
+@media (min-width: 769px) {
+  .logo-container {
+    max-width: 1200px; /* Ograniczenie szerokości, aby wymusić 2 rzędy */
+  }
+}
+
+/* Układ na średnich ekranach */
+@media (max-width: 768px) {
+  .logo-container {
+    justify-content: center; /* Wyśrodkowanie */
+    gap: 8px; /* Mniejszy odstęp */
+  }
+
+  .logo-image {
+    height: 50px; /* Zmniejszenie logotypów na tabletach */
+  }
+}
+
+/* Układ na małych ekranach */
+@media (max-width: 480px) {
+  .logo-container {
+    justify-content: center;
+    gap: 5px; /* Jeszcze mniejszy odstęp */
+  }
+
+  .logo-image {
+    height: 40px; /* Jeszcze mniejsze logotypy na telefonach */
+  }
+}
+
+
 
 /* Stylizacja kontaktu */
 ul {

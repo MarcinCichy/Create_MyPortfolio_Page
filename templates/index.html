@@ -3,16 +3,11 @@
 {% block title %}Strona Główna - Moje Portfolio{% endblock title %}
 
 {% block content %}
-<!-- Sekcja O mnie -->
-<!-- <h1 class="mb-4">O mnie</h1> -->
-
 <div class="profile-info">
   {% if avatar_path %}
     <img src="{{ avatar_path }}" alt="Avatar">
   {% else %}
-    <!-- W razie braku pobranego avatara - placeholder -->
-    <img src="https://via.placeholder.com/130x130.png?text=Brak+avatar"
-         alt="Avatar">
+    <img src="https://via.placeholder.com/130x130.png?text=Brak+avatar" alt="Avatar">
   {% endif %}
   <div>
     <h2>{{ my_name }}</h2>
@@ -22,54 +17,64 @@
 
 <hr />
 
-<!-- Doświadczenie -->
-<h3 class="section-title">Doświadczenie</h3>
-<p>
-  Przez kilkanaście lat zajmowałem się projektowaniem jak również programowaniem laserów.
-  Od zawsze interesowało mnie programowanie i ułatwianie życia dzięki rozwiązaniom programistycznym.
-  Uczę się programowania w języku Python, a od  niedawna wdrażam rozwiązania oparte na AI.
-</p>
+<!-- Sekcja Doświadczenie -->
+<section class="content-section">
+  <h3 class="section-title section-title--doswiadczenie">Doświadczenie</h3>
+  <p>
+    Przez kilkanaście lat zajmowałem się projektowaniem, zarządzaniem infrastrukturą IT, jak również programowaniem laserów.
+    Od zawsze interesowało mnie programowanie i ułatwianie życia dzięki rozwiązaniom programistycznym.
+    Uczę się programowania w języku Python, a od niedawna wdrażam rozwiązania oparte na AI.
+  </p>
+</section>
 
-<!-- Zainteresowania -->
-<h3 class="section-title">Zainteresowania</h3>
-<p>
-  Komputery, nowoczesne technologie. Stary sprzęt komputerow, jak Amiga, C-64. Elektronika, Literatura(ksiązki historyczne).
-</p>
+<!-- Kontener na logotypy -->
+<div class="logos-section">
+  {% for row in logos_rows %}
+  <div class="logo-container">
+    {% for logo in row %}
+    <img src="{{ logo.src }}" alt="{{ logo.alt }}" class="logo-image" />
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
 
 <hr />
 
-<!-- Kontakt -->
-<h3 class="section-title">Kontakt</h3>
-<p>
-  Jeśli chcesz się ze mną skontaktować, skorzystaj z jednego z poniższych sposobów:
-</p>
-<div class="kontakt-container">
-    <ul class="kontakt-column">
-      <li>
-        <strong>E-mail:</strong>
-        <a href="mailto:marcin-cichy@wp.pl">marcin-cichy [at] wp [dot] pl</a>
-      </li>
-      <li>
-        <strong>LinkedIn:</strong>
-        <a href="https://www.linkedin.com/in/marcin-pawel-cichy" target="_blank">
-          linkedin.com/in/marcincichy
-        </a>
-      </li>
-    </ul>
+<!-- Sekcja Zainteresowania -->
+<section class="content-section">
+  <h3 class="section-title section-title--zainteresowania">Zainteresowania</h3>
+  <p>
+    Komputery, nowoczesne technologie. Stary sprzęt komputerowy (Amiga, C-64). Elektronika. Raspberry PI. Literatura (książki historyczne).
+  </p>
+</section>
 
-    <ul class="kontakt-column">
-      <li>
-        <strong>GitLab:</strong>
-        <a href="https://gitlab.com/MarcinCichy" target="_blank">
-          gitlab.com/MarcinCichy
-        </a>
-      </li>
-      <li>
-        <strong>GitHub:</strong>
-        <a href="https://github.com/MarcinCichy" target="_blank">
-          github.com/MarcinCichy
-        </a>
-      </li>
-    </ul>
-  </div>
+<hr />
+
+<!-- Sekcja Kontakt -->
+<section class="content-section">
+  <h3 class="section-title">Kontakt</h3>
+  <!--
+  <p>
+    Jeśli chcesz się ze mną skontaktować, skorzystaj z jednego z poniższych sposobów:
+  </p>
+  -->
+  <ul>
+    <li>
+      <strong>E-mail:</strong>
+      <a href="mailto:marcin-cichy@wp.pl">marcin-cichy [at] wp [dot] pl</a>
+    </li>
+    <li>
+      <strong>LinkedIn:</strong>
+      <a href="https://www.linkedin.com/in/marcin-pawel-cichy" target="_blank">linkedin.com/in/marcincichy</a>
+    </li>
+    <li>
+      <strong>GitLab:</strong>
+      <a href="https://gitlab.com/MarcinCichy" target="_blank">gitlab.com/MarcinCichy</a>
+    </li>
+    <li>
+      <strong>GitHub:</strong>
+      <a href="https://github.com/MarcinCichy" target="_blank">github.com/MarcinCichy</a>
+    </li>
+  </ul>
+</section>
 {% endblock content %}

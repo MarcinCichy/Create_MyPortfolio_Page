@@ -1,27 +1,38 @@
-/* Podstawowe style */
+:root {
+  --main-bg-color: #282a36; /* Tło w stylu Dracula */
+  --navbar-bg-color: #353746; /* Ciemny navbar */
+  --text-color: #f8f8f2; /* Jasny tekst */
+  --accent-color: #006600; /* Zielony akcent */
+  --footer-bg-color: #353746; /* Tło stopki */
+}
+
+/* Główne stylizacje */
 body {
-  background-color: #282a36; /* Ciemne tło w stylu Dracula */
-  color: #f8f8f2;
+  background-color: var(--main-bg-color);
+  color: var(--text-color);
   margin: 0;
+  padding-top: 56px; /* Wysokość navbar */
+  padding-bottom: 56px; /* Wysokość stopki */
   font-family: 'Open Sans', sans-serif;
 }
 
 .navbar-dark {
-  background-color: #353746; /* Ciemny navbar */
+  background-color: var(--navbar-bg-color);
 }
 
 .nav-link,
 .navbar-brand {
-  color: #f8f8f2 !important;
+  color: var(--text-color) !important;
 }
 
 .nav-link:hover,
 .navbar-brand:hover {
-  color: #50fa7b !important; /* zielonkawy akcent */
+  color: var(--accent-color) !important;
 }
 
+/* Stylizacja kart */
 .card {
-  background-color: #353746;
+  background-color: var(--navbar-bg-color);
   border: none;
   border-radius: 5px;
 }
@@ -29,7 +40,7 @@ body {
 .card .card-title,
 .card .card-text,
 .card .btn {
-  color: #f8f8f2;
+  color: var(--text-color);
 }
 
 .btn-primary {
@@ -38,16 +49,26 @@ body {
 }
 
 .btn-primary:hover {
-  background-color: #50fa7b;
+  background-color: var(--accent-color);
 }
 
-/* Stopka */
+/* Stylizacja stopki */
 footer {
-  padding: 20px 0;
+  padding: 12px 0;
   text-align: center;
   font-size: 0.9em;
-  color: #f8f8f2;
+  color: var(--text-color);
   opacity: 0.8;
+  background-color: var(--footer-bg-color);
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Lekki cień u góry stopki */
+}
+
+footer p {
+  margin: 0;
 }
 
 /* Avatar + opis */
@@ -64,69 +85,71 @@ footer {
   height: 130px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #50fa7b;
+  border: 3px solid var(--accent-color);
+}
+
+/* Stylizacja głównych sekcji */
+.content-section {
+  margin-bottom: 15px; /* Odstęp między sekcjami */
+  text-align: left; /* Wyrównanie tekstu do lewej */
+  /* max-width: 800px; /* Ograniczenie szerokości treści */
 }
 
 .section-title {
-  margin-top: 40px;
-  margin-bottom: 20px;
   font-size: 1.8rem;
-  border-bottom: 2px solid #50fa7b;
+  border-bottom: 2px solid var(--accent-color);
   display: inline-block;
   padding-bottom: 5px;
 }
 
-/* ===== Nowe style dla kontenera kontaktowego ===== */
+.section-title--doswiadczenie {
+  margin-top: 5px;
+}
 
-/* Kontener kontaktowy */
-.kontakt-container {
+.section-title--zainteresowania {
+  margin-top: 5px;
+}
+
+/* Kontener na logotypy */
+.logos-section {
   display: flex;
-  justify-content: center; /* Wyśrodkowanie kolumn względem siebie */
-  gap: 50px; /* Odstęp między kolumnami */
-  margin-top: 40px; /* Odstęp od góry kontenera */
-
-  /* Nowe dodane style */
-  max-width: 800px; /* Maksymalna szerokość kontenera */
-  margin-left: 20px; /* Przesunięcie kontenera w lewo */
+  flex-direction: column; /* Układ wierszy */
+  gap: 20px; /* Odstęp między wierszami logotypów */
+  margin: 20px 0; /* Odstęp nad i pod sekcją */
 }
 
-/* Kolumny kontaktowe */
-.kontakt-column {
-  list-style-type: none; /* Usunięcie punktów listy */
+.logo-container {
+  display: flex;
+  justify-content: center; /* Wyśrodkowanie logotypów */
+  gap: 10px; /* Odstęp między logotypami w wierszu */
+}
+
+.logo-image {
+  width: auto;
+  height: 60px; /* Ustaw wysokość logotypów */
+}
+
+/* Stylizacja kontaktu */
+ul {
+  list-style-type: none;
   padding: 0;
-  text-align: left; /* Wyrównanie tekstu do lewej */
 }
 
-/* Elementy listy */
-.kontakt-column li {
-  margin-bottom: 15px; /* Odstęp między elementami listy */
+ul li {
+  margin-bottom: 10px;
 }
 
-/* Linki kontaktowe */
-.kontakt-column a {
+a {
+  color: var(--accent-color);
   text-decoration: none;
-  color: #50fa7b; /* Zielonkawy kolor linków */
-  transition: color 0.3s ease; /* Płynna zmiana koloru przy najechaniu */
-  font-weight: bold; /* Pogrubienie linków */
 }
 
-.kontakt-column a:hover {
-  color: #8be9fd; /* Kolor linku po najechaniu */
-  text-decoration: underline; /* Podkreślenie linku po najechaniu */
+a:hover {
+  text-decoration: underline;
 }
 
-/* Responsywność dla urządzeń mobilnych */
-@media (max-width: 600px) {
-  .kontakt-container {
-    flex-direction: column;
-    align-items: flex-start; /* Wyrównanie do lewej na małych ekranach */
-    gap: 20px; /* Zmniejszenie odstępu między kolumnami */
-    margin-left: 10px; /* Mniejszy odstęp od lewej krawędzi */
-    max-width: none; /* Usunięcie maksymalnej szerokości */
-  }
-
-  .kontakt-column {
-    width: 100%; /* Szerokość kolumny na mniejszych ekranach */
-    max-width: none; /* Usunięcie maksymalnej szerokości */
-  }
+/* Styl dla strony głównej, aby uniknąć przewijania */
+body.index-page {
+  height: 100vh; /* Wysokość na pełen ekran */
+  overflow: hidden; /* Blokada przewijania */
 }

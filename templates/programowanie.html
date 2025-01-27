@@ -23,6 +23,7 @@
           <p class="card-text">
             {{ project.description if project.description else "Brak opisu..." }}
           </p>
+          <p class="card-text"><small class="text-accent">Stworzony: {{ project.created_at_formatted }}</small></p>
         </div>
         <div>
           <a href="{{ project.web_url }}" class="btn btn-primary mt-3" target="_blank">

@@ -18,8 +18,10 @@ Biegle posługuję się programami:
 - AutoCAD
 - ArchiCAD
 
-![AutoCAD_LOGO](static/images/AutoCAD_LOGO.png "AutoCAD_LOGO") &nbsp;&nbsp;
-![ArchiCAD_LOGO](static/images/ArchiCAD_LOGO.jpg "ArchiCAD_LOGO")
+<div class="program-logos">
+  <img src="static/images/AutoCAD_LOGO.png" alt="AutoCAD_LOGO" title="AutoCAD_LOGO" class="program-logo" />
+  <img src="static/images/ArchiCAD_LOGO.jpg" alt="ArchiCAD_LOGO" title="ArchiCAD_LOGO" class="program-logo" />
+</div>
 
 Dodatkowo znam również:
 

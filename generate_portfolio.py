@@ -1,6 +1,8 @@
 import os
 import requests
 import markdown
+import json
+from datetime import datetime
 from dotenv import load_dotenv
 from jinja2 import Environment, FileSystemLoader
 
@@ -26,6 +28,7 @@ PROJECTS_TO_SKIP = [p.strip() for p in projects_to_skip_str.split(",") if p.stri
 
 env = Environment(loader=FileSystemLoader(TEMPLATES_DIR))
 
+
 def load_markdown_content(md_filename):
     """
     Wczytuje plik .md z katalogu content i konwertuje go na HTML.
@@ -36,6 +39,7 @@ def load_markdown_content(md_filename):
     with open(filepath, "r", encoding="utf-8") as f:
         text_md = f.read()
     return markdown.markdown(text_md, extensions=["fenced_code", "tables"])
+
 
 def get_user_info(username, token=None):
     """
@@ -53,6 +57,7 @@ def get_user_info(username, token=None):
         return users[0]
     return None
 
+
 def download_avatar(avatar_url):
     """
     Pobiera avatar i zapisuje go w static/images/avatar.jpg (nadpisuje).
@@ -69,6 +74,7 @@ def download_avatar(avatar_url):
             f.write(chunk)
     return "static/images/avatar.jpg"
 
+
 def fetch_gitlab_projects(username, token=None):
     """
     Pobiera listę projektów użytkownika z GitLab.
@@ -80,12 +86,13 @@ def fetch_gitlab_projects(username, token=None):
     params = {
         "visibility": "public",
         "per_page": 100,
-        "order_by": "last_activity_at",
+        "order_by": "created_at",
         "sort": "desc"
     }
     r = requests.get(url, headers=headers, params=params)
     r.raise_for_status()
     return r.json()
+
 
 def fetch_repo_tree(project_id, token=None, path="", ref="main"):
     from urllib.parse import quote
@@ -103,6 +110,7 @@ def fetch_repo_tree(project_id, token=None, path="", ref="main"):
     r.raise_for_status()
     return r.json()
 
+
 def download_file(project_id, file_path, token=None, ref="main"):
     from urllib.parse import quote
     encoded_path = quote(file_path, safe='')
@@ -114,6 +122,7 @@ def download_file(project_id, file_path, token=None, ref="main"):
     r = requests.get(url, headers=headers, params=params)
     r.raise_for_status()
     return r.content
+
 
 def find_screenshot_paths(project_id, token=None, ref="main"):
     """
@@ -133,6 +142,7 @@ def find_screenshot_paths(project_id, token=None, ref="main"):
                     found.append((item["name"], item["path"]))
     return found
 
+
 def download_first_screenshot(project, token=None):
     """
     Pobiera pierwszy znaleziony screenshot i zwraca lokalną ścieżkę.
@@ -151,11 +161,21 @@ def download_first_screenshot(project, token=None):
         f.write(file_bytes)
     return f"static/screenshots/{local_filename}"
 
+
 def render_page(template_name, output_filename, **context):
     template = env.get_template(template_name)
     rendered_html = template.render(**context)
     with open(os.path.join(BASE_DIR, output_filename), "w", encoding="utf-8") as f:
         f.write(rendered_html)
+
+
+def load_logos(json_file):
+    """
+    Wczytuje listę logotypów podzielonych na wiersze z pliku JSON.
+    """
+    with open(json_file, "r", encoding="utf-8") as f:
+        return json.load(f)["rows"]
+
 
 def main():
     # Pobieramy info o użytkowniku -> avatar
@@ -166,45 +186,59 @@ def main():
     # Pobieramy projekty
     projects = fetch_gitlab_projects(GITLAB_USERNAME, GITLAB_TOKEN)
 
-    # Filtrujemy
+    # Filtrowanie wybranych projektów
     filtered_projects = [
         p for p in projects
         if p["name"] not in PROJECTS_TO_SKIP
     ]
-    # Pobieramy screenshot dla każdego projektu (opcjonalnie)
+
+    # Sortowanie projektów od najnowszych do najstarszych
+    filtered_projects.sort(key=lambda x: x['created_at'], reverse=True)
+
+    # Formatowanie daty i pobieranie screenshotów
     for p in filtered_projects:
+        # Formatowanie daty
+        try:
+            # Zakładamy, że 'created_at' jest w formacie ISO 8601
+            dt = datetime.strptime(p['created_at'], "%Y-%m-%dT%H:%M:%S.%fZ")
+            p['created_at_formatted'] = dt.strftime("%d.%m.%Y")
+        except ValueError:
+            # Jeśli format się nie zgadza, zostaw oryginalną wartość
+            p['created_at_formatted'] = p['created_at']
+
+        # Pobieranie screenshotów
         screenshot_path = download_first_screenshot(p, token=GITLAB_TOKEN)
         p["screenshot_path"] = screenshot_path
 
     # Wczytujemy treści Markdown
     it_html = load_markdown_content("it.md")
-    # budownictwo_html = load_markdown_content("budownictwo.md")
-    # lasery_html = load_markdown_content("lasery.md")
+    budownictwo_html = load_markdown_content("budownictwo.md")
+    lasery_html = load_markdown_content("lasery.md")
 
-    # Renderujemy podstrony:
-    # index.html (strona główna)
+    logos_rows = load_logos("logos.json")
+
+    # Renderowanie stron
     render_page("index.html", "index.html",
                 my_name=MY_NAME,
                 my_description=MY_DESCRIPTION,
-                avatar_path=avatar_path)
+                avatar_path=avatar_path,
+                logos_rows=logos_rows)
 
-    # programowanie.html - projekty z GitLaba
     render_page("programowanie.html", "programowanie.html",
                 projects=filtered_projects)
 
-    # it.html - wstawiamy md w it_content
     render_page("it.html", "it.html",
                 it_content=it_html)
 
-    # # budownictwo.html
+    # Jeśli chwilowo pominąłeś generowanie innych podstron, odkomentuj je, gdy będziesz gotów
     # render_page("budownictwo.html", "budownictwo.html",
     #             budownictwo_content=budownictwo_html)
-    #
-    # # lasery.html
+
     # render_page("lasery.html", "lasery.html",
     #             lasery_content=lasery_html)
 
     print("Wygenerowano strony w bieżącym katalogu!")
+
 
 if __name__ == "__main__":
     main()

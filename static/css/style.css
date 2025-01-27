@@ -125,8 +125,9 @@ footer p {
 }
 
 .logo-image {
-  width: auto;
-  height: 60px; /* Ustaw wysokość logotypów */
+  width: auto !important;
+  height: 60px !important; /* Ustaw wysokość logotypów */
+  object-fit: contain; /* Dopasowanie obrazu do miniaturki */
 }
 
 /* Stylizacja kontaktu */

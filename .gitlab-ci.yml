@@ -5,18 +5,14 @@ pages:
     # 1. Instalacja zależności
     - pip install -r requirements.txt
 
-    # 2. (Opcjonalnie) ustawiamy zmienną środowiskową GITLAB_TOKEN,
-    #    jeżeli jest dodana w Settings -> CI/CD -> Variables
-    #    - export GITLAB_TOKEN="$GITLAB_TOKEN"
-
-    # 3. Generowanie plików HTML
+    # 2. Generowanie plików HTML
     - python generate_portfolio.py
 
-    # 4. Tworzymy folder public/ i kopiujemy do niego pliki,
-    #    które mają być dostępne jako strony
+    # 3. Tworzenie folderu public i kopiowanie wszystkich plików
     - mkdir public
     - cp -r *.html public/
     - cp -r static/ public/static/
+    - cp -r templates/ public/templates/ # Jeśli szablony są potrzebne
 
   artifacts:
     paths:
@@ -25,3 +21,4 @@ pages:
 
   only:
     - main  # pipeline ruszy tylko przy pushu na main
+

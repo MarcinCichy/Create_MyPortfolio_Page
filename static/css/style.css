@@ -183,3 +183,27 @@ body.index-page {
   height: 100vh; /* Wysokość na pełen ekran */
   overflow: hidden; /* Blokada przewijania */
 }
+
+
+.navigation-links {
+  display: flex;
+  justify-content: left; /* Ustawienie linków do lewej, jak pozostała treść */
+  gap: 20px; /* Odstęp między linkami */
+  margin-top: 10px; /* Dystans od sekcji powyżej */
+}
+
+.navigation-links a {
+  color: var(--accent-color);
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1rem; /* Większa czytelność */
+}
+
+.navigation-links a:hover {
+  text-decoration: underline;
+}
+
+.separator {
+  color: var(--text-color); /* Separatory w kolorze tekstu */
+  font-weight: bold;
+}

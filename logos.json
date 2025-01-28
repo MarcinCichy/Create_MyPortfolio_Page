@@ -7,7 +7,7 @@
       {"src": "static/images/logo/git_hub_logo.png", "alt": "GitHub Logo"},
       {"src": "static/images/logo/OpenAI_LOGO.png", "alt": "OpenAI Logo"},
       {"src": "static/images/logo/postgresql_logo.png", "alt": "PostgreSQL Logo"},
-      {"src": "static/images/logo/SQLite_logo_new.png", "alt": "SQLite Logo"},
+      {"src": "static/images/logo/SQLite_logo.png", "alt": "SQLite Logo"},
       {"src": "static/images/logo/PyQt-Logo.png", "alt": "PyQT Logo"},
       {"src": "static/images/logo/pygame_logo.png", "alt": "pygame Logo"},
       {"src": "static/images/logo/beautiful-soup_logo.png", "alt": "Beautiful Soup Logo"},
@@ -15,7 +15,7 @@
     ],
     [
       {"src": "static/images/logo/AirTable Logo.png", "alt": "AirTable Logo"},
-      {"src": "static/images/logo/Make Logo.png", "alt": "Make Logo"},
+      {"src": "static/images/logo/Make_Logo.png", "alt": "Make Logo"},
       {"src": "static/images/logo/JSON-LOGO.png", "alt": "JSON Logo"},
       {"src": "static/images/logo/AutoCAD_LOGO.png", "alt": "AutoCAD Logo"},
       {"src": "static/images/logo/ArchiCAD_LOGO.png", "alt": "ArchiCAD Logo"},

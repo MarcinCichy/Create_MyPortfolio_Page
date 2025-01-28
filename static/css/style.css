@@ -112,10 +112,12 @@ footer p {
 
 /* Kontener na logotypy */
 .logo-container {
+  padding: 5px;
   display: flex;
   flex-wrap: wrap; /* Pozwala zawijać logotypy na kolejne wiersze */
   justify-content: center; /* Wyśrodkowanie logotypów */
   gap: 10px; /* Odstęp między logotypami */
+  background-color: var(--main-bg-color);
 }
 
 .logo-image {

@@ -4,7 +4,7 @@
       {"src": "static/images/logo/Python_LOGO.png", "alt": "Python Logo"},
       {"src": "static/images/logo/git_logo.png", "alt": "GIT Logo"},
       {"src": "static/images/logo/gitlab-logo.png", "alt": "GitLab Logo"},
-      {"src": "static/images/logo/git_hub_logo.jpg", "alt": "GitHub Logo"},
+      {"src": "static/images/logo/git_hub_logo.png", "alt": "GitHub Logo"},
       {"src": "static/images/logo/OpenAI_LOGO.png", "alt": "OpenAI Logo"},
       {"src": "static/images/logo/postgresql_logo.png", "alt": "PostgreSQL Logo"},
       {"src": "static/images/logo/SQLite_logo_new.jpg", "alt": "SQLite Logo"},

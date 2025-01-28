@@ -15,7 +15,7 @@ Monitorowanie i optymalizacja wydajności serwerów oraz zarządzanie aktualizac
 - Automatyzacja zadań za pomocą skryptów Bash.
 - Monitorowanie wydajności systemu oraz logów w celu diagnozowania problemów.
 
-## 3.Budowa i administracja sieci komputerowych LAN:
+## 3. Budowa i administracja sieci komputerowych LAN:
 
 - Projektowanie, konfiguracja i utrzymanie sieci lokalnych w środowiskach domowych oraz biznesowych.
 - Konfiguracja urządzeń sieciowych, takich jak routery, switche, access pointy, firewalle.

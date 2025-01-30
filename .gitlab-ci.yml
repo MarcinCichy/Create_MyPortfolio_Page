@@ -1,10 +1,6 @@
 image: python:3.10
 
-stages:
-  - build
-
 pages:
-  stage: build
   script:
     # 1. Instalacja zależności
     - pip install -r requirements.txt
@@ -16,6 +12,7 @@ pages:
     - mkdir public
     - cp -r *.html public/
     - cp -r static/ public/static/
+    - cp -r templates/ public/templates/ # Jeśli szablony są potrzebne
 
   artifacts:
     paths:
@@ -25,6 +22,3 @@ pages:
   only:
     - main  # pipeline ruszy tylko przy pushu na main
 
-  schedule:
-    - cron: "0 0 * * *" # Uruchomienie codziennie o północy UTC
-      ref: main

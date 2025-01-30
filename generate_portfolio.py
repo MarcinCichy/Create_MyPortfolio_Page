@@ -212,8 +212,8 @@ def main():
 
     # Wczytujemy treści Markdown
     it_html = load_markdown_content("it.md")
-    budownictwo_html = load_markdown_content("budownictwo.md")
-    lasery_html = load_markdown_content("lasery.md")
+    # budownictwo_html = load_markdown_content("budownictwo.md")
+    # lasery_html = load_markdown_content("lasery.md")
 
     logos_rows = load_logos("logos.json")
 

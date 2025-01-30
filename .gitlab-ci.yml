@@ -16,6 +16,7 @@ pages:
     - mkdir public
     - cp -r *.html public/
     - cp -r static/ public/static/
+    - "curl -X POST --fail -F token=${CI_JOB_TOKEN} -F ref=main https://gitlab.com/api/v4/projects/66394676/trigger/pipeline"
 
   artifacts:
     paths:

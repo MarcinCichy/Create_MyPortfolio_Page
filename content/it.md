@@ -5,7 +5,7 @@
 - Zarządzanie użytkownikami i uprawnieniami w Active Directory.
 - Konfiguracja zasad grupowych (GPO) oraz zarządzanie politykami bezpieczeństwa.
 - Utrzymanie systemów Windows Server, w tym zarządzanie rolami i funkcjami, takimi jak DHCP, DNS, IIS.
-Monitorowanie i optymalizacja wydajności serwerów oraz zarządzanie aktualizacjami systemu.
+- Monitorowanie i optymalizacja wydajności serwerów oraz zarządzanie aktualizacjami systemu.
 
 ## 2. Administracja systemami Linux:
 

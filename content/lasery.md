@@ -17,3 +17,5 @@ W zakresie obsługi laserów do cięcia stali firmy Trumpf posiadam kilkunastole
 - opracowywaniem techologii wykonywania elementów ze stali (cięcie, gięcie)
 - wycena oraz przygotowywanie ofert
 - obsługa Klienta
+
+

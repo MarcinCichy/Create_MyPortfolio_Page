@@ -1,0 +1,209 @@
+:root {
+  --main-bg-color: #282a36; /* Tło w stylu Dracula */
+  --navbar-bg-color: #353746; /* Ciemny navbar */
+  --text-color: #f8f8f2; /* Jasny tekst */
+  --accent-color: #006600; /* Zielony akcent */
+  --footer-bg-color: #353746; /* Tło stopki */
+}
+
+/* Główne stylizacje */
+body {
+  background-color: var(--main-bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding-top: 56px; /* Wysokość navbar */
+  padding-bottom: 56px; /* Wysokość stopki */
+  font-family: 'Open Sans', sans-serif;
+}
+
+.navbar-dark {
+  background-color: var(--navbar-bg-color);
+}
+
+.nav-link,
+.navbar-brand {
+  color: var(--text-color) !important;
+}
+
+.nav-link:hover,
+.navbar-brand:hover {
+  color: var(--accent-color) !important;
+}
+
+/* Stylizacja kart */
+.card {
+  background-color: var(--navbar-bg-color);
+  border: none;
+  border-radius: 5px;
+}
+
+.card .card-title,
+.card .card-text,
+.card .btn {
+  color: var(--text-color);
+}
+
+.btn-primary {
+  background-color: #6272a4;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-color);
+}
+
+/* Stylizacja stopki */
+footer {
+  padding: 12px 0;
+  text-align: center;
+  font-size: 0.9em;
+  color: var(--text-color);
+  opacity: 0.8;
+  background-color: var(--footer-bg-color);
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Lekki cień u góry stopki */
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Avatar + opis */
+.profile-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-info img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent-color);
+}
+
+/* Stylizacja głównych sekcji */
+.content-section {
+  margin-bottom: 15px; /* Odstęp między sekcjami */
+  text-align: left; /* Wyrównanie tekstu do lewej */
+  /* max-width: 800px; /* Ograniczenie szerokości treści */
+}
+
+.section-title {
+  font-size: 1.8rem;
+  border-bottom: 2px solid var(--accent-color);
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.section-title--doswiadczenie {
+  margin-top: 5px;
+}
+
+.section-title--zainteresowania {
+  margin-top: 5px;
+}
+
+/* Kontener na logotypy */
+.logo-container {
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap; /* Pozwala zawijać logotypy na kolejne wiersze */
+  justify-content: center; /* Wyśrodkowanie logotypów */
+  gap: 10px; /* Odstęp między logotypami */
+  background-color: var(--main-bg-color);
+}
+
+.logo-image {
+  width: auto;
+  height: 60px; /* Ustawienie maksymalnej wysokości logotypów */
+  object-fit: contain; /* Dopasowanie obrazu do kontenera */
+}
+
+/* Układ na dużych ekranach (domyślny: 2 rzędy) */
+@media (min-width: 769px) {
+  .logo-container {
+    max-width: 1200px; /* Ograniczenie szerokości, aby wymusić 2 rzędy */
+  }
+}
+
+/* Układ na średnich ekranach */
+@media (max-width: 768px) {
+  .logo-container {
+    justify-content: center; /* Wyśrodkowanie */
+    gap: 8px; /* Mniejszy odstęp */
+  }
+
+  .logo-image {
+    height: 50px; /* Zmniejszenie logotypów na tabletach */
+  }
+}
+
+/* Układ na małych ekranach */
+@media (max-width: 480px) {
+  .logo-container {
+    justify-content: center;
+    gap: 5px; /* Jeszcze mniejszy odstęp */
+  }
+
+  .logo-image {
+    height: 40px; /* Jeszcze mniejsze logotypy na telefonach */
+  }
+}
+
+
+
+/* Stylizacja kontaktu */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Styl dla strony głównej, aby uniknąć przewijania */
+body.index-page {
+  height: 100vh; /* Wysokość na pełen ekran */
+  overflow: hidden; /* Blokada przewijania */
+}
+
+
+.navigation-links {
+  display: flex;
+  justify-content: left; /* Ustawienie linków do lewej, jak pozostała treść */
+  gap: 20px; /* Odstęp między linkami */
+  margin-top: 10px; /* Dystans od sekcji powyżej */
+}
+
+.navigation-links a {
+  color: var(--accent-color);
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1rem; /* Większa czytelność */
+}
+
+.navigation-links a:hover {
+  text-decoration: underline;
+}
+
+.separator {
+  color: var(--text-color); /* Separatory w kolorze tekstu */
+  font-weight: bold;
+}

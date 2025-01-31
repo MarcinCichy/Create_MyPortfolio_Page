@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Budownictwo - Moje Portfolio{% endblock title %}
+
+{% block content %}
+<h1>Budownictwo</h1>
+<!-- Tekst z budownictwo.md -->
+<div>
+  {{ budownictwo_content|safe }}
+</div>
+{% endblock content %}
+

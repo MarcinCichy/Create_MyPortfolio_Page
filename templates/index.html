@@ -20,11 +20,8 @@
 <!-- Sekcja Doświadczenie -->
 <section class="content-section">
   <h3 class="section-title section-title--doswiadczenie">Doświadczenie</h3>
-  <p>
-    Przez kilkanaście lat zajmowałem się projektowaniem, zarządzaniem infrastrukturą IT, jak również programowaniem laserów.
-    Od zawsze interesowało mnie programowanie i ułatwianie życia dzięki rozwiązaniom programistycznym.
-    Uczę się programowania w języku Python, a od niedawna wdrażam rozwiązania oparte na AI.
-  </p>
+  <!-- <p>{{ my_experience }}</p> -->
+  <div>{{ my_experience|safe }}</div>
 </section>
 
 <!-- Kontener na logotypy -->
@@ -50,9 +47,8 @@
 <!-- Sekcja Zainteresowania -->
 <section class="content-section">
   <h3 class="section-title section-title--zainteresowania">Zainteresowania</h3>
-  <p>
-    Komputery, nowoczesne technologie. Stary sprzęt komputerowy (Amiga, C-64). Elektronika. Raspberry PI. Literatura (książki historyczne).
-  </p>
+  <!-- <p>{{ my_interests }}</p> -->
+  <div>{{ my_interests|safe }}</div>
 </section>
 
 <hr />

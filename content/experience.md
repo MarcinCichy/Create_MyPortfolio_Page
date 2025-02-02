@@ -1,0 +1,1 @@
+Przez kilkanaście lat zajmowałem się projektowaniem, zarządzaniem infrastrukturą IT, jak również programowaniem laserów. Od zawsze interesowało mnie programowanie i ułatwianie życia dzięki rozwiązaniom programistycznym. Uczę się programowania w języku Python, a od niedawna wdrażam rozwiązania oparte na AI.

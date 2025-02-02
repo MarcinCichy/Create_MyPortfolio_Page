@@ -212,6 +212,9 @@ def main():
 
     # Wczytujemy treści Markdown
     it_html = load_markdown_content("it.md")
+    my_description = load_markdown_content("description.md")
+    my_experience = load_markdown_content("experience.md")
+    my_interests = load_markdown_content("interests.md")
     # budownictwo_html = load_markdown_content("budownictwo.md")
     # lasery_html = load_markdown_content("lasery.md")
 
@@ -220,7 +223,9 @@ def main():
     # Renderowanie stron
     render_page("index.html", "index.html",
                 my_name=MY_NAME,
-                my_description=MY_DESCRIPTION,
+                my_description=my_description,
+                my_experience=my_experience,
+                my_interests=my_interests,
                 avatar_path=avatar_path,
                 logos_rows=logos_rows)
 

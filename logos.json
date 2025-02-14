@@ -14,6 +14,7 @@
       {"src": "static/images/logo/Linux_LOGO.png", "alt": "Linux Logo"}
     ],
     [
+      {"src": "static/images/logo/docker_logo.png", "alt": "Docker Logo"},
       {"src": "static/images/logo/AirTable Logo.png", "alt": "AirTable Logo"},
       {"src": "static/images/logo/Make_Logo.png", "alt": "Make Logo"},
       {"src": "static/images/logo/JSON-LOGO.png", "alt": "JSON Logo"},
@@ -25,7 +26,8 @@
       {"src": "static/images/logo/WinServer_LOGO.png", "alt": "Windows Server Logo"},
       {"src": "static/images/logo/Win10_LOGO.png", "alt": "Windows 10 Logo"},
       {"src": "static/images/logo/MSDOS_LOGO.png", "alt": "MSDOS Logo"},
-      {"src": "static/images/logo/WinXP_LOGO.png", "alt": "Windows Logo"}
+      {"src": "static/images/logo/WinXP_LOGO.png", "alt": "Windows Logo"},
+      {"src": "static/images/logo/raspberry-pi_logo.png", "alt": "RaspberryPI Logo"}
     ]
   ]
 }

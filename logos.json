@@ -11,7 +11,8 @@
       {"src": "static/images/logo/PyQt-Logo.png", "alt": "PyQT Logo"},
       {"src": "static/images/logo/pygame_logo.png", "alt": "pygame Logo"},
       {"src": "static/images/logo/beautiful-soup_logo.png", "alt": "Beautiful Soup Logo"},
-      {"src": "static/images/logo/Linux_LOGO.png", "alt": "Linux Logo"}
+      {"src": "static/images/logo/Linux_LOGO.png", "alt": "Linux Logo"},
+      {"src": "static/images/logo/selenium_logo.png", "alt": "Selenium Logo"}
     ],
     [
       {"src": "static/images/logo/docker_logo.png", "alt": "Docker Logo"},
@@ -27,7 +28,8 @@
       {"src": "static/images/logo/Win10_LOGO.png", "alt": "Windows 10 Logo"},
       {"src": "static/images/logo/MSDOS_LOGO.png", "alt": "MSDOS Logo"},
       {"src": "static/images/logo/WinXP_LOGO.png", "alt": "Windows Logo"},
-      {"src": "static/images/logo/raspberry-pi_logo.png", "alt": "RaspberryPI Logo"}
+      {"src": "static/images/logo/raspberry-pi_logo.png", "alt": "RaspberryPI Logo"},
+      {"src": "static/images/logo/pandas_logo.png", "alt": "Pandas Logo"}
     ]
   ]
 }

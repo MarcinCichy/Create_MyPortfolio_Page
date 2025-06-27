@@ -1,4 +1,4 @@
-#  My Portfolio
+#  My Portfolio 
 
 ##  Project Description
 This is my **automatically generated portfolio**, which fetches information about my repositories from **GitLab** and elegantly presents them on a website. The page is dynamically created based on the repository contents and additional **Markdown** files.

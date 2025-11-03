@@ -1,1 +1,1 @@
-Marcin Cichy - aspirujący do bycia programistą w języku Python, fan nowoczesnych technologii oraz starych komputerów.
+Marcin Cichy - aspirujący do bycia programistą w języku Python, fan nowoczesnych technologii, AI oraz starych komputerów.

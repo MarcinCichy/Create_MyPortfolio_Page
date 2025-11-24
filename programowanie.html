@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Programowanie - Moje Portfolio</title>
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+  <!-- Nasz plik CSS (Dracula dark theme) -->
+  <link rel="stylesheet" href="static/css/style.css">
+
+  
+</head>
+<body class="">
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Moje Portfolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <!-- Linki do podstron -->
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Strona Główna</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="programowanie.html">Programowanie</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="it.html">IT</a>
+          </li>
+          <!-- Pomiń linki do lasery/budownictwo, jeśli są pominięte -->
+          <!--
+          <li class="nav-item">
+            <a class="nav-link" href="budownictwo.html">Budownictwo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="lasery.html">Lasery</a>
+          </li>
+          -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Główna zawartość i stopka w Flex container -->
+  <div class="d-flex flex-column min-vh-100">
+    <!-- Zawartość strony -->
+    <div class="container my-4 flex-grow-1">
+      
+<h1 class="mb-4">Projekty Programistyczne</h1>
+<p>Tutaj znajdują się informacje o moich projektach z GitLab (pobierane automatycznie).</p>
+
+<!-- Rzędy Bootstrapa z automatycznymi kolumnami (3 w rzędzie na szerszych ekranach) -->
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">olt-event-checker</h5>
+          <p class="card-text">
+            OLT Event Monitor is a Python application designed for automated monitoring of OLT (Optical Line Terminal) devices, likely Huawei or similar models. The script connects to multiple devices in parallel via SSH, executes a predefined series of commands to fetch system logs, and then parses those logs for specific, user-defined event patterns (e.g., "Source MAC" alarms).
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 23.10.2025</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/olt-event-checker" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/71321906_computer.png" alt="winget_agent_new"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">winget_agent_new</h5>
+          <p class="card-text">
+            Winget Dashboard is a Flask-based web application for remotely monitoring and managing software on Windows computers using the winget package manager. The project is designed for small to medium-sized IT teams who need a simple, centralized tool to automate updates, uninstalls, and reporting for their workstations.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 02.07.2025</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/winget_agent_new" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/71120015_computer_details.png" alt="WingetAgent"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">WingetAgent</h5>
+          <p class="card-text">
+            A Python-based web application for centrally managing the winget package manager on multiple computers in a local network. The dashboard allows for monitoring installed applications, available updates, and remotely executing actions such as updating or uninstalling software.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 25.06.2025</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/wingetagent" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">device table generator</h5>
+          <p class="card-text">
+            This Python command-line tool is used to create a comprehensive inventory of network devices. The script combines data collected passively from the LibreNMS monitoring system API with the results of an active local network scan using Nmap. The result is a readable table displayed in the console, as well as .txt and .json files containing the collected information.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 23.06.2025</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/device-table-generator" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/70774949_screenshot.png" alt="LockLauncher"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">LockLauncher</h5>
+          <p class="card-text">
+            A lightweight Python/Tkinter utility to password-protect standalone Windows .exe files.
+It wraps your target executable in a small “launcher” that:
+
+
+Encrypts the original .exe to <name>.exe.enc (AES-256-CBC + PBKDF2).
+
+Backs up the original to <name>.exe.bak.
+
+Drops a password-protected wrapper in place of the original.
+On launch, prompts for the password, decrypts to a temporary file (*_real.exe), runs it in place (so all DLLs and resources are correctly found), and cleans up after exit.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 12.06.2025</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/locklauncher" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">sprawdz_ip</h5>
+          <p class="card-text">
+            Automatyzuje skanowanie adresów IP za pomocą Nmap (TCP/UDP, wersje usług, opcjonalnie wykrywanie systemu i skrypty NSE), zapisuje wyniki do scan_results.log i sygnalizuje, czy host wygląda na zajęty czy „prawdopodobnie wolny”.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 02.06.2025</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/sprawdz_ip" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/69935831_main_window.png" alt="email_viewer"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">email_viewer</h5>
+          <p class="card-text">
+            A web application for browsing .eml files, allowing quick preview of email headers and full content in plain text or HTML format.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 17.05.2025</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/email_viewer" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">duplicated_ont_sn</h5>
+          <p class="card-text">
+            The script automatically scans .log files, extracts ONT serial numbers (sn-auth) along with their description (desc) and source address (source_ip), and then creates an Excel file, sn_auth_desc.xlsx, with two tabs: All Data and Duplicate Desc. This allows you to quickly detect duplicate entries (duplicate ONT serial numbers) and easily investigate them.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 22.04.2025</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/duplicated_ont_sn" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/68569522_connections.png" alt="auto_net_diagram_creator"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">auto_net_diagram_creator</h5>
+          <p class="card-text">
+            AUTO NET DIAGRAM CREATOR
+
+auto_net_diagram_creator is a tool for automatically discovering
+
+network connections from devices and generating Draw.io and SVG diagrams.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 01.04.2025</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/auto_net_diagram_creator" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">clear_GenieACS_faults</h5>
+          <p class="card-text">
+            This script automates the clearing of the "Faults" list in GenieACS via the web interface.
+
+After loading the login credentials from the .env (USERNAME_KEY, PASSWORD_KEY, HOST), it launches Chrome via Selenium, logs in, navigates to the /faults page, calculates the number of pages in the pagination, and then, for each page:
+
+finds all "Destroy" links,
+
+clicks them one by one (refreshing the list after each deletion),
+
+accepts the confirmation pop-up alert,
+
+proceeds to the next page by clicking "Next."
+
+Finally, it closes the browser.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 21.03.2025</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/clear_genieacs_faults" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">Airport_ALS</h5>
+          <p class="card-text">
+            Brak opisu...
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 20.03.2025</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/airport_als" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/67982293_details.png" alt="olt_bckp"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">olt_bckp</h5>
+          <p class="card-text">
+            OLT Backup & Management System
+A professional tool for automating network device backups (OLT) with a web interface, data encryption, and database support.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 13.03.2025</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/olt_bckp" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">Lass_wyc</h5>
+          <p class="card-text">
+            Brak opisu...
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 20.02.2025</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/lass_wyc" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/66954994_main_window.png" alt="explain_the_code"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">explain_the_code</h5>
+          <p class="card-text">
+            Explain the Code is a web application written in Python that helps explain Python code in a simple and understandable way. The application splits the provided code into logical sections—using a combination of regular expressions and an AI-driven intelligent split—and generates step-by-step explanations for each section via OpenAI's ChatGPT. The solution is designed with beginner programmers in mind, such as teenagers learning to code.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 09.02.2025</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/explain_the_code" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">geo_to_dxf</h5>
+          <p class="card-text">
+            This project is a simple Python converter that transforms GEO files (in Trumpf format) into DXF files (R12). The program reads data about points, lines, arcs, and circles from a GEO file and writes them into a DXF file while preserving color information.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 07.02.2025</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/geo_to_dxf" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">projekt_db</h5>
+          <p class="card-text">
+            Brak opisu...
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 05.02.2025</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/projekt_db" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/66394676_portfolio_screenshot.png" alt="Create_MyPortfolio_Page"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">Create_MyPortfolio_Page</h5>
+          <p class="card-text">
+            This is my automatically generated portfolio, which fetches information about my repositories from GitLab and elegantly presents them on a website. The page is dynamically created based on the repository contents and additional Markdown files.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 23.01.2025</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/create_myportfolio_page" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/66110326_CS_help_scr.png" alt="Client-Server_SQLite"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">Client-Server_SQLite</h5>
+          <p class="card-text">
+            It is a simple client server application. With a console user interface. It is based on sockets, sending information using JSON. With the possibility of choosing the data engine PostgreSQL or SQLite. For more information, see the README.md file.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 13.01.2025</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/client-server_sqlite" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/65629385_snowflakes_banner.png" alt="Snowflakes"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">Snowflakes</h5>
+          <p class="card-text">
+            This project is a simple Python script that generates a snow animation in the terminal. It uses Unicode characters to represent snowflakes that fall randomly across the screen, creating a wintery scene.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 22.12.2024</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/snowflakes" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/65543477_main_app.png" alt="git_sync"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">git_sync</h5>
+          <p class="card-text">
+            Git Sync is a Python-based tool designed to automate the synchronization of your repositories from GitLab to GitHub. It streamlines the process of cloning repositories from GitLab and pushing them to GitHub, ensuring your repositories are consistently up-to-date across both platforms. The tool supports both SSH and HTTPS connections, providing flexibility based on your preferred authentication method.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 19.12.2024</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/git_sync" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/65209686_screenshot1.png" alt="RAG_Programing_Learning_Support"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">RAG_Programing_Learning_Support</h5>
+          <p class="card-text">
+            This project is an implementation of a RAG (Retrieval-Augmented Generation) system that helps users, especially beginner programmers, learn programming by creating the game Frogger in Python. The system is based on knowledge extracted from a PDF file describing the process of creating the Frogger game and supports users in a simple, accessible way.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 08.12.2024</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/rag_programing_learning_support" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/60413595_stress_test_logs.png" alt="Connection_pool"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">Connection_pool</h5>
+          <p class="card-text">
+            Brak opisu...
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 29.07.2024</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/connection_pool" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/58019774_main_app.png" alt="LMDB"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">LMDB</h5>
+          <p class="card-text">
+            This is a program used to calculate the elongation of material during bending on a press brake. Ultimately, it is supposed to support dxf files and generate such files for laser cutting.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 20.05.2024</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/lmdb" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/57060912_Application window.png" alt="ComparePDF"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">ComparePDF</h5>
+          <p class="card-text">
+            ComparePDF (PDF Comparator)  v3.0 is a PyQt5-based desktop application designed to visually compare two PDF files. It highlights differences between the documents, enabling users to quickly identify changes.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 19.04.2024</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/comparepdf" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/50654703_green_checkmark.png" alt="JoinAllToOne"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">JoinAllToOne</h5>
+          <p class="card-text">
+            This program was developed as part of the mentoring program "Za Rączce". Its main goal is to merge the content of selected files into one text file according to a specific format. This is to create one file to be used in coode review.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 24.09.2023</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/joinalltoone" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/42845754_main_view.png" alt="Files-Lister_PyQT5-version"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">Files-Lister_PyQT5-version</h5>
+          <p class="card-text">
+            PyQT5 version. The program for people who don't know DOS commands or those who don't want to mess with the command line. It saves to the file 'list.txt' the names of all files from the current folder with the given file extension. It can prints that list.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 24.01.2023</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/Files-Lister_PyQT5-version" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/42641321_main.png" alt="BIN2TXT_Converter"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">BIN2TXT_Converter</h5>
+          <p class="card-text">
+            It is program to convert binary information to text, and vice versa.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 17.01.2023</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/bin2txt_converter" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/40666538_CS_help_scr.png" alt="Client-Server"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">Client-Server</h5>
+          <p class="card-text">
+            This is a simple client-server application. With a console user interface. It is based on sockets, sending information using JSON. This application uses only PostgreSQL. For more information, see the README.md file.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 31.10.2022</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/client-server" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/39226569_main2.png" alt="TronG - game with animation and sounds - Pygame"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">TronG - game with animation and sounds - Pygame</h5>
+          <p class="card-text">
+            TronG - this is the game freely inspired by the movie "Tron"
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 07.09.2022</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/exam-pong-game" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/35052720_main.png" alt="RandomRadioStations"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">RandomRadioStations</h5>
+          <p class="card-text">
+            A little script for randomly selecting radio stations to listen to ;)
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 04.04.2022</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/randomradiostations" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/32432103_CH_1.png" alt="Checkers - May The Best Win"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">Checkers - May The Best Win</h5>
+          <p class="card-text">
+            Checkers - May The Best Win
+
+Checkers with computer player logic.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 28.12.2021</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/checkers" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/30725766_main.png" alt="I Made That Monster - a text game with a surprising plot and a dynamically created scenario"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">I Made That Monster - a text game with a surprising plot and a dynamically created scenario</h5>
+          <p class="card-text">
+            I Made That Monster
+
+The text game in Python
+
+The code includes dynamic class instance creation based on the "description.txt" and "alternative_description.txt" text files.
+
+Everyone can create their own game scenario
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 24.10.2021</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/python-text-game" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/27033368_main_view.png" alt="Files Lister"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">Files Lister</h5>
+          <p class="card-text">
+            Tkinter version. The program for people who don't know DOS commands or those who don't want to mess with the command line.
+It saves to the file 'list.txt' the names of all files from the current folder with the given file extension.  It can prints that list.
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 30.05.2021</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/files-lister" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Karta wyrównana do pełnej wysokości w kolumnie -->
+    <div class="card h-100 d-flex flex-column">
+      
+        <img src="static/screenshots/26804995_hangman0.png" alt="Hangman in Python - take secret word from Web"
+             class="card-img-top project-image"
+             style="object-fit: cover; height: 200px; width: 100%;">
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">Hangman in Python - take secret word from Web</h5>
+          <p class="card-text">
+            Hangman game with ASCII fun animation ;)
+
+BeautifulSoup is used to retrieve secret words from websites.
+
+          </p>
+          <p class="card-text"><small class="text-accent">Stworzony: 20.05.2021</small></p>
+        </div>
+        <div>
+          <a href="https://gitlab.com/MarcinCichy/hangman-in-python" class="btn btn-primary mt-3" target="_blank">
+            Repozytorium
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+    </div>
+
+    <!-- STOPKA -->
+    <footer class="fixed-bottom">
+      <p>© 2025 - Moje Portfolio. Wygenerowane automatycznie za pomocą Python + GitLab API. Marcin Cichy</p>
+    </footer>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+</body>
+</html>

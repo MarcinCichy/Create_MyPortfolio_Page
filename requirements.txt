@@ -1,4 +1,0 @@
-markdown
-requests
-python-dotenv
-jinja2

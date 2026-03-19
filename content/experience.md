@@ -1,1 +1,5 @@
-Przez kilkanaście lat zajmowałem się projektowaniem, zarządzaniem infrastrukturą IT, jak również programowaniem laserów. Od zawsze interesowało mnie programowanie i ułatwianie życia dzięki rozwiązaniom programistycznym. Uczę się programowania w języku Python, a od niedawna wdrażam rozwiązania oparte na AI.
+Moja droga do obecnego miejsca w IT to ewolucja od wsparcia technicznego, przez wieloletnie inżynieryjne programowanie laserów CNC, aż po administrację sieciami i zaawansowany development w Pythonie
+. Od zawsze moją największą motywacją było ułatwianie życia sobie i innym poprzez technologię.
+Dziś realizuję ten cel budując dedykowane aplikacje narzędziowe, skrypty dla działów IT oraz systemy webowe (oparte m.in. o framework Flask i bazy PostgreSQL)
+. W dobie błyskawicznego rozwoju technologii nie tylko tworzę rozwiązania oparte na sztucznej inteligencji (np. własne systemy typu RAG
+), ale uczyniłem z asystentów AI (takich jak Claude, ChatGPT czy Gemini) nieodłączny element mojego własnego środowiska programistycznego. Dzięki temu sprawnie łączę świat infrastruktury sieciowej z nowoczesnym kodowaniem.

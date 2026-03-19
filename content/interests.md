@@ -1,1 +1,1 @@
-Komputery, nowoczesne technologie. Stary sprzęt komputerowy (Amiga, Commodore C-64). Elektronika. Raspberry PI. Literatura (książki historyczne).
+AI, Komputery, nowoczesne technologie. Stary sprzęt komputerowy (Amiga, Commodore C-64). Elektronika. Raspberry PI. Literatura (książki historyczne).

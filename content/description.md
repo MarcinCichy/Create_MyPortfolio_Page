@@ -1,1 +1,4 @@
-Marcin Cichy - aspirujący do bycia programistą w języku Python, fan nowoczesnych technologii, AI oraz starych komputerów.
+Marcin Cichy - Wszechstronny inżynier IT, administrator sieci i systemów oraz programista Pythona
+. Skutecznie łączę utrzymanie infrastruktury (Windows/Linux) z tworzeniem dedykowanych narzędzi automatyzujących pracę działów IT
+. Posiadam wieloletnie, inżynieryjne doświadczenie w technologiach CNC, co przekłada się na analityczne podejście do rozwiązywania złożonych problemów i precyzję w kodowaniu
+. W codziennej pracy aktywnie wykorzystuję techniki AI-assisted development (współpraca z modelami ClaudeCode, Codex, Gemini, ChatGPT, NotebookLM), co pozwala mi na błyskawiczne prototypowanie rozwiązań, analizę logów i optymalizację procesów administracyjnych.
